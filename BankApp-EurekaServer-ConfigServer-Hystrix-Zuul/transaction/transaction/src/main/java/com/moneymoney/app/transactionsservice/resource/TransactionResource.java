@@ -28,6 +28,7 @@ public class TransactionResource {
 
 	@PostMapping("/deposit")
 	public ResponseEntity<Transaction> deposit(@RequestBody Transaction transaction) {
+		System.out.println(transaction+" Transaction");
 		ResponseEntity<Double> entity = restTemplate.getForEntity(
 				"http://accounts-service/accounts/" + transaction.getAccountNumber() + "/balance", Double.class);
 		Double currentBalance = entity.getBody();
